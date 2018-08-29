@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+// App v1 API
+Route::group(['prefix' => 'api/v1',], function () {
+
+    Route::get('/', function () {
+        return view('welcome');
+    });
+});
