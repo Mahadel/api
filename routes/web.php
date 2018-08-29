@@ -21,4 +21,5 @@ Route::group(['prefix' => 'api/v1',], function () {
     Route::get('/', function () {
         return view('welcome');
     });
+    Route::get('/category', 'CategoryController@index');
 });
