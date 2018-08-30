@@ -22,4 +22,5 @@ Route::group(['prefix' => 'api/v1',], function () {
         return view('welcome');
     });
     Route::get('/category', 'CategoryController@index');
+    Route::get('/skill', 'SkillController@index');
 });
