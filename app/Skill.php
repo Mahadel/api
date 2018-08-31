@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Skill extends Model
 {
-    //protected $dateFormat = 'U';
     protected $fillable = [
         'category_id',
         'fa_name',
