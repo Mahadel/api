@@ -8,6 +8,6 @@ class User extends Model
 {
     public function userSkills()
     {
-        return $this->hasMany('App\UserSkill', 'user_email', 'email');
+        return $this->hasMany('App\UserSkill', 'user_email', 'email')->with('skill');
     }
 }

@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class UserSkill extends Model
 {
 
-    public function skills()
+    public function skill()
     {
-        return $this->hasMany('App\Skill', 'uuid', 'skill_uuid');
+        return $this->hasOne('App\Skill', 'uuid', 'skill_uuid');
     }
 }
