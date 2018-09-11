@@ -9,6 +9,7 @@
         "barryvdh/laravel-ide-helper": "^2.4",
         "doctrine/dbal": "^2.8",
         "fideloper/proxy": "^4.0",
+      "google/apiclient": "^2.2",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0"
     },
