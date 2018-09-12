@@ -35,7 +35,7 @@ class AuthenticationController extends Controller
             $user->is_active = 1;
             return $user->storeOrLogin($user);
         } else {
-            return Utils::responseMessage("", "authentication failed", 'login', 403);
+            return Utils::responseMessage("authentication failed", 'login', 403);
         }
     }
 }

@@ -10,13 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+$version_1 = "api/v1";
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 // App v1 API
-Route::group(['prefix' => 'api/v1',], function () {
+Route::group(['prefix' => $version_1], function () {
 
     Route::get('/', function () {
         return view('welcome');
@@ -25,4 +26,10 @@ Route::group(['prefix' => 'api/v1',], function () {
     Route::get('/skill', 'SkillController@index');
     Route::get('/user', 'UserController@index');
     Route::post('/token', 'AuthenticationController@generateToken');
+
 });
+
+Route::group(array('prefix' => $version_1, 'middleware' => ['jwt.user.auth']), function () {
+    Route::put('/user/{uuid}', 'UserController@update');
+});
+
