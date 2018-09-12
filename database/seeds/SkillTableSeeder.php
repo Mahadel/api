@@ -14,7 +14,7 @@ class SkillTableSeeder extends Seeder
     public function run()
     {
         DB::table('skills')->insert([
-            'category_id' => 1,
+            'category_uuid' => "1",
             'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             'fa_name' => 'توسعه اندروید',
             'en_name' => 'Android developer',
@@ -22,7 +22,7 @@ class SkillTableSeeder extends Seeder
             'updated_at' => Carbon::now()
         ]);
         DB::table('skills')->insert([
-            'category_id' => 1,
+            'category_uuid' => "1",
             'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             'fa_name' => 'لاراول',
             'en_name' => 'Laravel',
@@ -30,7 +30,7 @@ class SkillTableSeeder extends Seeder
             'updated_at' => Carbon::now()
         ]);
         DB::table('skills')->insert([
-            'category_id' => 1,
+            'category_uuid' => "1",
             'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             'fa_name' => 'پایتون',
             'en_name' => 'Python',
@@ -38,7 +38,7 @@ class SkillTableSeeder extends Seeder
             'updated_at' => Carbon::now()
         ]);
         DB::table('skills')->insert([
-            'category_id' => 1,
+            'category_uuid' => "1",
             'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             'fa_name' => 'نود جی‌اس',
             'en_name' => 'NodeJS',
@@ -46,7 +46,7 @@ class SkillTableSeeder extends Seeder
             'updated_at' => Carbon::now()
         ]);
         DB::table('skills')->insert([
-            'category_id' => 1,
+            'category_uuid' => "1",
             'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             'fa_name' => 'توسعه آی‌اواس',
             'en_name' => 'iOS developer',
@@ -54,7 +54,7 @@ class SkillTableSeeder extends Seeder
             'updated_at' => Carbon::now()
         ]);
         DB::table('skills')->insert([
-            'category_id' => 1,
+            'category_uuid' => "1",
             'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             'fa_name' => 'دیتابیس',
             'en_name' => 'Database',
@@ -62,7 +62,7 @@ class SkillTableSeeder extends Seeder
             'updated_at' => Carbon::now()
         ]);
         DB::table('skills')->insert([
-            'category_id' => 1,
+            'category_uuid' => "1",
             'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             'fa_name' => 'رتروفیت',
             'en_name' => 'Retrofit',
@@ -70,7 +70,7 @@ class SkillTableSeeder extends Seeder
             'updated_at' => Carbon::now()
         ]);
         DB::table('skills')->insert([
-            'category_id' => 2,
+            'category_uuid' => "2",
             'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             'fa_name' => 'متریال دیزاین',
             'en_name' => 'Material design',
@@ -78,7 +78,7 @@ class SkillTableSeeder extends Seeder
             'updated_at' => Carbon::now()
         ]);
         DB::table('skills')->insert([
-            'category_id' => 2,
+            'category_uuid' => "2",
             'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             'fa_name' => 'ادوبی ایلوستریتور',
             'en_name' => 'Adobe Illustrator',
@@ -87,7 +87,7 @@ class SkillTableSeeder extends Seeder
         ]);
 
         DB::table('skills')->insert([
-            'category_id' => 3,
+            'category_uuid' => "3",
             'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             'fa_name' => 'شطرنج',
             'en_name' => 'Chess',
