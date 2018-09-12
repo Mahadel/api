@@ -22,11 +22,10 @@ Route::group(['prefix' => $version_1], function () {
     Route::get('/', function () {
         return view('welcome');
     });
-    Route::get('/category', 'CategoryController@index');
     Route::get('/skill', 'SkillController@index');
     Route::get('/user', 'UserController@index');
     Route::post('/token', 'AuthenticationController@generateToken');
-
+    Route::get('/category', 'CategoryController@index');
 });
 
 Route::group(array('prefix' => $version_1, 'middleware' => ['jwt.user.auth']), function () {

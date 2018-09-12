@@ -15,11 +15,12 @@ class Category extends Model
     ];
     protected $hidden = [
         'created_at',
-        'updated_at'
+        'updated_at',
+        'id'
     ];
 
     public function skills()
     {
-        return $this->hasMany(Skill::class);
+        return $this->hasMany('App\Skill', 'category_uuid', 'uuid');
     }
 }
