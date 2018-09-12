@@ -14,8 +14,17 @@ class UserSkillTableSeeder extends Seeder
     {
 
         DB::table("user_skills")->insert([
-            'user_email' => 'bkhezry@gmail.com',
-            'skill_uuid' => '8a30ebfe-5f45-49be-955d-33894f6cf1c4',
+            'user_uuid' => 'fd309352-6c59-4fcb-816c-c1a702bf0796',
+            'skill_uuid' => '7daa01fb-7d25-44c0-b502-3b144707c439',
+            'skill_type' => 1,
+            'description' => 'description',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+        DB::table("user_skills")->insert([
+            'user_uuid' => 'fd309352-6c59-4fcb-816c-c1a702bf0796',
+            'skill_uuid' => '7daa01fb-7d25-44c0-b502-3b144707c439',
+            'skill_type' => 2,
             'description' => 'description',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
