@@ -36,4 +36,18 @@ class User extends Model
     {
         return User::where('uuid', $uuid)->first();
     }
+
+    public function isExist($uuid, $token)
+    {
+        $user = $this->getUserWithUUID($uuid);
+        if ($user->uuid) {
+            if ($user->token == $token) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 }

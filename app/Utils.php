@@ -59,5 +59,14 @@ class Utils
             return nullValue();
         }
     }
-
+    public static function isJWTExist($token)
+    {
+        $decoded = Utils::getDataJWT($token);
+        $user = new User();
+        if ($user->isExist($decoded->uuid, $token)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
