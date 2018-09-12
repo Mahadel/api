@@ -15,9 +15,10 @@ class CreateUserSkillsTable extends Migration
     {
         Schema::create('user_skills', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user_email');
+            $table->string('user_uuid');
             $table->string('skill_uuid');
             $table->text('description');
+            $table->integer('skill_type');
             $table->timestamps();
         });
     }
