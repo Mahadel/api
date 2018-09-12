@@ -32,4 +32,8 @@ class User extends Model
     {
         return User::where('email', $email)->first();
     }
+    public function getUserWithUUID($uuid)
+    {
+        return User::where('uuid', $uuid)->first();
+    }
 }

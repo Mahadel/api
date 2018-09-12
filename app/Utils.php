@@ -8,7 +8,7 @@ use Firebase\JWT\JWT;
 class Utils
 {
 
-    public static function responseMessage($uuid, $message, $operation_type, $status_code)
+    public static function responseMessage($message, $operation_type, $status_code)
     {
         return response()->json([
             'message' => $message,
