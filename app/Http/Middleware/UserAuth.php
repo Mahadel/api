@@ -19,7 +19,11 @@ class UserAuth
         $authorization = $request->header('Authorization');
         if ($authorization) {
             if (Utils::isValidJWT($authorization)) {
-                return $next($request);
+                if (Utils::isJWTExist($authorization)) {
+                    return $next($request);
+                } else {
+                    return Utils::responseMessage("authorization failed", 'authentication', 403);
+                }
             } else {
                 return Utils::responseMessage("authorization failed", 'authentication', 403);
             }

@@ -30,5 +30,7 @@ Route::group(['prefix' => $version_1], function () {
 
 Route::group(array('prefix' => $version_1, 'middleware' => ['jwt.user.auth']), function () {
     Route::put('/user/{uuid}', 'UserController@update');
+    Route::get('/user/{uuid}', 'UserController@getUser');
+    Route::get('/user/{uuid}/skills', 'UserController@getUserSkills');
 });
 

@@ -12,6 +12,14 @@ class UserController extends Controller
     {
         return User::with('userSkills')->get();
     }
+    public function getUserSkills($uuid)
+    {
+        return User::with('userSkills')->where(['uuid' => $uuid])->first()->userSkills;
+    }
+    public function getUser($uuid)
+    {
+        return User::with('userSkills')->where(['uuid' => $uuid])->first();
+    }
 
     public function update(Request $request, $uuid)
     {
