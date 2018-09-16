@@ -15,6 +15,7 @@ class CreateUserSkillsTable extends Migration
     {
         Schema::create('user_skills', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('uuid');
             $table->string('user_uuid');
             $table->string('skill_uuid');
             $table->text('description');
