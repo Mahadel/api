@@ -64,7 +64,7 @@ class UserController extends Controller
                 $user_skill->description = $request->description;
                 $user_skill->skill_type = $request->skill_type;
                 $user_skill->save();
-                return Utils::responseMessage('success', 'add skill of user', 200);    
+                return $user_skill;    
             }else{
                 return Utils::responseMessage('skill not found.', 'add skill of user', 404);    
             }
