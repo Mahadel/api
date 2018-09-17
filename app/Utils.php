@@ -16,13 +16,14 @@ class Utils
         ], $status_code, ['Content-type' => 'application/json; charset=utf-8']);
     }
 
-    public static function returnToken($uuid, $token, $message, $operation_type, $status_code)
+    public static function returnToken($uuid, $token, $message, $operation_type, $is_fill_info, $status_code)
     {
         return response()->json([
             'uuid' => $uuid,
             'message' => $message,
             'token' => $token,
-            'type' => $operation_type
+            'type' => $operation_type,
+            'fill_info' => $is_fill_info
         ], $status_code, ['Content-type' => 'application/json; charset=utf-8']);
     }
 
