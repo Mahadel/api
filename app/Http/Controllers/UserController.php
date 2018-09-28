@@ -58,18 +58,36 @@ class UserController extends Controller
             $skill = $skill->getSkillWithUUID($request->skill_uuid);
             if ($skill) {
                 $user_skill = new UserSkill();
-                $user_skill->uuid=Utils::generateUUID();
+                $user_skill->uuid = Utils::generateUUID();
                 $user_skill->user_uuid = $uuid;
                 $user_skill->skill_uuid = $request->skill_uuid;
                 $user_skill->description = $request->description;
                 $user_skill->skill_type = $request->skill_type;
                 $user_skill->save();
-                return $user_skill;    
-            }else{
-                return Utils::responseMessage('skill not found.', 'add skill of user', 404);    
+                return $user_skill;
+            } else {
+                return Utils::responseMessage('skill not found.', 'add skill of user', 404);
             }
         } else {
             return Utils::responseMessage('user not found.', 'add skill of user', 404);
+        }
+    }
+    public function editUserSkill(Request $request, $uuid)
+    {
+        $user = new User();
+        $user = $user->getUserWithUUID($uuid);
+        if ($user) {
+            $user_skill = new UserSkill();
+            $user_skill = $user_skill->getUserSkillWithUUID($request->uuid);
+            if ($user_skill) {
+                $user_skill->description = $request->description;
+                $user_skill->save();
+                return $user_skill;
+            } else {
+                return Utils::responseMessage('user skill not found.', 'edit skill of user', 404);
+            }
+        } else {
+            return Utils::responseMessage('user not found.', 'edit skill of user', 404);
         }
     }
 }

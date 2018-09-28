@@ -13,4 +13,9 @@ class UserSkill extends Model
     {
         return $this->hasOne('App\Skill', 'uuid', 'skill_uuid');
     }
+
+    public function getUserSkillWithUUID($uuid)
+    {
+        return UserSkill::where('uuid', $uuid)->first();
+    }
 }
