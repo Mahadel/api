@@ -90,4 +90,22 @@ class UserController extends Controller
             return Utils::responseMessage('user not found.', 'edit skill of user', 404);
         }
     }
+
+    public function deleteUserSkill($uuid,$user_skill_uuid)
+    {
+        $user = new User();
+        $user = $user->getUserWithUUID($uuid);
+        if ($user) {
+            $user_skill = new UserSkill();
+            $user_skill = $user_skill->getUserSkillWithUUID($user_skill_uuid);
+            if ($user_skill) {
+                $user_skill->delete();                
+                return Utils::responseMessage('success', 'delete skill of user', 200);
+            } else {
+                return Utils::responseMessage('user skill not found.', 'edit skill of user', 404);
+            }
+        } else {
+            return Utils::responseMessage('user not found.', 'edit skill of user', 404);
+        }
+    }
 }

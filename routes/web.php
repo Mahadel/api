@@ -34,5 +34,6 @@ Route::group(array('prefix' => $version_1, 'middleware' => ['jwt.user.auth']), f
     Route::get('/user/{uuid}/skill', 'UserController@getUserSkill');
     Route::post('/user/{uuid}/skill', 'UserController@addUserSkill');
     Route::put('/user/{uuid}/skill', 'UserController@editUserSkill');
+    Route::delete('/user/{uuid}/skill/{user_skill_uuid}', 'UserController@deleteUserSkill');
 });
 
