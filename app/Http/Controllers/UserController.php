@@ -30,6 +30,14 @@ class UserController extends Controller
             return Utils::responseMessage('user not found.', 'get user', 404);
         }
     }
+    public function getUserInfo($uuid)
+    {
+        if (User::isUserExistWithUUID($uuid)) {
+            return User::where(['uuid' => $uuid])->first()->setVisible(['first_name','last_name','gender']);
+        } else {
+            return Utils::responseMessage('user not found.', 'get user skills', 404);
+        }
+    }
 
     public function update(Request $request, $uuid)
     {
