@@ -18,7 +18,7 @@ class CreateUserSkillsTable extends Migration
             $table->string('uuid');
             $table->string('user_uuid');
             $table->string('skill_uuid');
-            $table->text('description')->default('');
+            $table->text('description')->nullable();
             $table->integer('skill_type');
             $table->timestamps();
         });
