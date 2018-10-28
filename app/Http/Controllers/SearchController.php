@@ -31,6 +31,8 @@ class SearchController extends Controller
 
         $want_learn_result = UserSkill::whereIn('skill_uuid', $learn_ids)->where(['skill_type' => 1])->get();
         $want_teach_result = UserSkill::whereIn('skill_uuid', $teach_ids)->where(['skill_type' => 2])->get();
+        $merged = $want_learn_result->merge($want_teach_result);
+        return $merged;
         foreach ($want_learn_result as $learn_item) {
             foreach ($want_teach_result as $teach_item) {
                 if ($learn_item->user_uuid == $teach_item->user_uuid) {
