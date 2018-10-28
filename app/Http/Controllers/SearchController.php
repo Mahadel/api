@@ -30,7 +30,16 @@ class SearchController extends Controller
         $learn_ids->all();
 
         $want_learn_result = UserSkill::whereIn('skill_uuid', $learn_ids)->where(['skill_type' => 1])->get();
-        $want_tech_result = UserSkill::whereIn('skill_uuid', $teach_ids)->where(['skill_type' => 2])->get();
+        $want_teach_result = UserSkill::whereIn('skill_uuid', $teach_ids)->where(['skill_type' => 2])->get();
+        foreach ($want_learn_result as $learn_item) {
+            foreach ($want_teach_result as $teach_item) {
+                if ($learn_tem->user_uuid == $teach_item->user_uuid) {
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        }
         return $want_learn_result;
     }
 }
