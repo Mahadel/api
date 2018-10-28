@@ -8,6 +8,6 @@ class SearchController extends Controller
 {
     public function search($uuid)
     {
-        return $uuid;
+        $user = User::with('userSkills')->where(['uuid' => $uuid])->first()->userSkills;
     }
 }
