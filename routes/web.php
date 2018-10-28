@@ -26,6 +26,7 @@ Route::group(['prefix' => $version_1], function () {
     Route::get('/user', 'UserController@index');
     Route::post('/token', 'AuthenticationController@generateToken');
     Route::get('/category', 'CategoryController@index');
+    Route::get('/search/{uuid}', 'SearchController@search');
 });
 
 Route::group(array('prefix' => $version_1, 'middleware' => ['jwt.user.auth']), function () {
