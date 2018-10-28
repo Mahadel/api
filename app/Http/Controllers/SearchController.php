@@ -35,7 +35,7 @@ class SearchController extends Controller
         foreach ($want_learn_result as $learn_item) {
             foreach ($want_teach_result as $teach_item) {
                 if ($learn_item->user_uuid == $teach_item->user_uuid) {
-                    $user = User::where('uuid', $teach_item->user_uuid)->first();
+                    $user = User::where('uuid', $teach_item->user_uuid)->first()->setVisible(['uuid','first_name','last_name','gender']);;
                     $result = [
                         'user' => $user,
                         'learn_skill_uuid' => $learn_item->skill_uuid,
