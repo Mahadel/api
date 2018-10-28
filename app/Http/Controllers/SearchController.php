@@ -34,12 +34,12 @@ class SearchController extends Controller
         foreach ($want_learn_result as $learn_item) {
             foreach ($want_teach_result as $teach_item) {
                 if ($learn_item->user_uuid == $teach_item->user_uuid) {
-                    return true;
-                }else{
-                    return false;
+                    return 'true';
+                } else {
+                    return 'false';
                 }
             }
         }
-        return $want_learn_result;
+        return $false;
     }
 }
