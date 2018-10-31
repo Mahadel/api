@@ -38,10 +38,10 @@ class SearchController extends Controller
                     $user = User::where('uuid', $teach_item->user_uuid)->first()->setVisible(['uuid', 'first_name', 'last_name', 'gender']);;
                     $result = [
                         'user' => $user,
-                        'learn_skill_uuid' => $learn_item->skill_uuid,
-                        'teach_skill_uuid' => $teach_item->skill_uuid,
-                        'learn_description' => $learn_item->description,
-                        'teach_description' => $teach_item->description
+                        'learn_skill_uuid' => $teach_item->skill_uuid,
+                        'teach_skill_uuid' => $learn_item->skill_uuid,
+                        'learn_description' => $teach_item->description,
+                        'teach_description' => $learn_item->description
                     ];
                     array_push($data, $result);
                 }
