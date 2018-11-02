@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRequestsEmailTable extends Migration
+class CreateConnectionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateRequestsEmailTable extends Migration
      */
     public function up()
     {
-        Schema::table('connections', function (Blueprint $table) {
+        Schema::create('connections', function (Blueprint $table) {
             $table->increments('id');
             $table->string('user_uuid_from');
             $table->string('user_uuid_to');
@@ -33,8 +33,6 @@ class CreateRequestsEmailTable extends Migration
      */
     public function down()
     {
-        Schema::table('connections', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('connections');
     }
 }
