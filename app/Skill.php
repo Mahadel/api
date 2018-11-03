@@ -25,4 +25,13 @@ class Skill extends Model
     {
         return Skill::where('uuid', $uuid)->first();
     }
+
+    public static function isSkillExistWithUUID($uuid)
+    {
+        if (Skill::where('uuid', $uuid)->first()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
