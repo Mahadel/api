@@ -70,4 +70,8 @@ class Utils
             return false;
         }
     }
+
+    public static function isUserExist($uuid){
+        
+    }
 }
