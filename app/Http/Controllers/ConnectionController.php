@@ -7,6 +7,7 @@ use App\Connection;
 use App\Utils;
 use App\User;
 use App\Skill;
+use GuzzleHttp\Psr7\Request;
 
 class ConnectionController extends Controller
 {
@@ -34,5 +35,9 @@ class ConnectionController extends Controller
         } else {
             return Utils::responseMessage('user or skill not found.', 'create connection', 404);
         }
+    }
+    public function getConnection($uuid)
+    {
+        return Connection::where('user_uuid_from', $uuid)->orWhere('user_uuid_to', $uuid)->get();
     }
 }
