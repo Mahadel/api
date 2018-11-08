@@ -37,6 +37,6 @@ class ConnectionController extends Controller
     }
     public function getConnection($uuid)
     {
-        return Connection::where('user_uuid_from', $uuid)->orWhere('user_uuid_to', $uuid)->get()->setHidden(['id']);
+        return Connection::where('user_uuid_from', $uuid)->orWhere('user_uuid_to', $uuid)->get();
     }
 }
