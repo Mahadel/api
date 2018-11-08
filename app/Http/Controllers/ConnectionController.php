@@ -7,7 +7,6 @@ use App\Connection;
 use App\Utils;
 use App\User;
 use App\Skill;
-use GuzzleHttp\Psr7\Request;
 
 class ConnectionController extends Controller
 {
