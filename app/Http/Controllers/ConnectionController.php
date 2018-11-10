@@ -39,7 +39,7 @@ class ConnectionController extends Controller
     public function getConnection($uuid)
     {
         $connection_send = Connection::where('user_uuid_from', $uuid)->get();
-        $connection_receive = Connection::where('user_uuid_from', $uuid)->get();
+        $connection_receive = Connection::where('user_uuid_to', $uuid)->get();
         $connections = array();
         $connections['connection_send'] = $connection_send;
         $connections['connection_receive'] = $connection_receive;
