@@ -7,6 +7,7 @@ use App\Connection;
 use App\Utils;
 use App\User;
 use App\Skill;
+use phpDocumentor\Reflection\Types\Array_;
 
 class ConnectionController extends Controller
 {
@@ -37,6 +38,11 @@ class ConnectionController extends Controller
     }
     public function getConnection($uuid)
     {
-        return Connection::where('user_uuid_from', $uuid)->orWhere('user_uuid_to', $uuid)->get();
+        $connection_send = Connection::where('user_uuid_from', $uuid)->get();
+        $connection_receive = Connection::where('user_uuid_from', $uuid)->get();
+        $connections = array();
+        $connections->connection_send = $connection_send;
+        $connections->connection_receive = $connection_receive;
+        return $connections;
     }
 }
