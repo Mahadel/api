@@ -22,10 +22,10 @@ class Connection extends Model
 
     public function userSend()
     {
-        return $this->hasOne('App\user', 'uuid', 'user_uuid_from');
+        return $this->hasOne('App\User', 'uuid', 'user_uuid_from');
     }
     public function userReceive()
     {
-        return $this->hasOne('App\user', 'uuid', 'user_uuid_to');
+        return $this->hasOne('App\User', 'uuid', 'user_uuid_to');
     }
 }
