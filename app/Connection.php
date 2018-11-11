@@ -19,4 +19,13 @@ class Connection extends Model
         'updated_at'
     ];
     protected $hidden = ['id'];
+
+    public function userSend()
+    {
+        return $this->hasOne('App\user', 'uuid', 'user_uuid_from');
+    }
+    public function userReceive()
+    {
+        return $this->hasOne('App\user', 'uuid', 'user_uuid_to');
+    }
 }
