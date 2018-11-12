@@ -22,6 +22,6 @@ class Connection extends Model
 
     public function user()
     {
-        return $this->hasOne('App\User', 'uuid', 'user_uuid_from')->setVisible(['id']);
+        return $this->hasOne('App\User', 'uuid', 'user_uuid_from');
     }
 }

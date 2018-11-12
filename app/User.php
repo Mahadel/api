@@ -10,6 +10,16 @@ class User extends Model
     protected $fillable = [
         'uuid'
     ];
+    protected $hidden = [
+        'id',
+        'email',
+        'token',
+        'description',
+        'user_type',
+        'is_active',
+        'created_at',
+        'updated_at'
+    ];
 
     public function userSkills()
     {
@@ -21,13 +31,13 @@ class User extends Model
         $old_user = $this->getUserWithEmail($user->email);
         if ($old_user) {
             if ($old_user->is_active == 1) {
-                return Utils::returnToken($old_user->uuid, $old_user->token, "success", 'login',true, 200);
+                return Utils::returnToken($old_user->uuid, $old_user->token, "success", 'login', true, 200);
             } else {
                 return Utils::responseMessage("Your account permanently deactivated.", 'login', 403);
             }
         } else {
             $user->save();
-            return Utils::returnToken($user->uuid, $user->token, "success", 'store',false, 200);
+            return Utils::returnToken($user->uuid, $user->token, "success", 'store', false, 200);
         }
 
     }
