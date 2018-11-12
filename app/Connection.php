@@ -20,7 +20,11 @@ class Connection extends Model
     ];
     protected $hidden = ['id'];
 
-    public function user()
+    public function userTo()
+    {
+        return $this->hasOne('App\User', 'uuid', 'user_uuid_to');
+    }
+    public function userFrom()
     {
         return $this->hasOne('App\User', 'uuid', 'user_uuid_from');
     }
