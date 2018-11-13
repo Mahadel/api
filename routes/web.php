@@ -29,6 +29,7 @@ Route::group(['prefix' => $version_1], function () {
     Route::get('/search/{uuid}', 'SearchController@search');
     Route::get('/connection', 'ConnectionController@index');
     Route::get('user/{uuid}/connection', 'ConnectionController@getConnection');
+    Route::delete('/user/{uuid}/connection/{connection_uuid}', 'ConnectionController@delete');
 });
 
 Route::group(array('prefix' => $version_1, 'middleware' => ['jwt.user.auth']), function () {
@@ -42,6 +43,5 @@ Route::group(array('prefix' => $version_1, 'middleware' => ['jwt.user.auth']), f
 
     Route::post('/connection', 'ConnectionController@store');
 
-    Route::delete('/user/{uuid}/connection/{connection_uuid}', 'ConnectionController@delete');
 });
 
