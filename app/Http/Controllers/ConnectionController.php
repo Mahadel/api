@@ -62,4 +62,29 @@ class ConnectionController extends Controller
             return Utils::responseMessage('user not found.', 'delete connection', 404);
         }
     }
+
+    public function editConnection($uuid, $connection_uuid, Request $request)
+    {
+        $user = new User();
+        $user = $user->getUserWithUUID($uuid);
+        //TODO check for owner of connection before remove.
+        if ($user) {
+            $connection = new Connection();
+            $connection = $connection->getConnectionWithUUID($connection_uuid);
+            if ($connection) {
+                if ($request->is_accept == 1) {
+                    $connection->email_to = $user->email;
+                    $connection->is_accept = 1;
+                } else {
+                    $connection->is_accept = 0;
+                }
+                $connection->save();
+                return $connection;
+            } else {
+                return Utils::responseMessage('connection not found.', 'edit connection', 404);
+            }
+        } else {
+            return Utils::responseMessage('user not found.', 'edit connection', 404);
+        }
+    }
 }
