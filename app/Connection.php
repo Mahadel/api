@@ -30,6 +30,6 @@ class Connection extends Model
     }
     public function getConnectionWithUUID($connection_uuid)
     {
-        return Connection::where('uuid', $connection_uuid)->first();
+        return Connection::with('userFrom')->where('uuid', $connection_uuid)->first();
     }
 }
