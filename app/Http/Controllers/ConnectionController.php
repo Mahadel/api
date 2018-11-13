@@ -76,7 +76,7 @@ class ConnectionController extends Controller
                     $connection->email_to = $user->email;
                     $connection->is_accept = 1;
                 } else {
-                    $connection->email_to = null;
+                    $connection->email_to = nullValue();
                     $connection->is_accept = 0;
                 }
                 $connection->save();
