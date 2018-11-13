@@ -44,4 +44,21 @@ class ConnectionController extends Controller
         $connections['connection_receive'] = $connection_receive;
         return $connections;
     }
+    public function delete($uuid, $connection_uuid)
+    {
+        $user = new User();
+        $user = $user->getUserWithUUID($uuid);
+        if ($user) {
+            $connection = new Connection();
+            $connection = $connection->getConnectionWithUUID($connection_uuid);
+            if ($connection) {
+                $connection->delete();
+                return Utils::responseMessage('success', 'delete connection', 200);
+            } else {
+                return Utils::responseMessage('connection not found.', 'delete connection', 404);
+            }
+        } else {
+            return Utils::responseMessage('user not found.', 'delete connection', 404);
+        }
+    }
 }
