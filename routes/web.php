@@ -41,5 +41,7 @@ Route::group(array('prefix' => $version_1, 'middleware' => ['jwt.user.auth']), f
     Route::delete('/user/{uuid}/skill/{user_skill_uuid}', 'UserController@deleteUserSkill');
 
     Route::post('/connection', 'ConnectionController@store');
+
+    Route::delete('/user/{uuid}/connection/{connection_uuid}', 'ConnectionController@delete');
 });
 
