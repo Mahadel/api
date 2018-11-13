@@ -28,4 +28,8 @@ class Connection extends Model
     {
         return $this->hasOne('App\User', 'uuid', 'user_uuid_from');
     }
+    public function getConnectionWithUUID($connection_uuid)
+    {
+        return Connection::where('uuid', $connection_uuid)->first();
+    }
 }
