@@ -15,16 +15,15 @@ class ConnectionController extends Controller
     {
         return Connection::all();
     }
-    public function store(Request $request)
+    public function store($uuid, Request $request)
     {
-        return $request;
-        if (User::isUserExistWithUUID($request->user_uuid_from)
+        if (User::isUserExistWithUUID($uuid)
             && User::isUserExistWithUUID($request->user_uuid_to)
             && Skill::isSkillExistWithUUID($request->learn_skill_uuid_from)
             && Skill::isSkillExistWithUUID($request->teach_skill_uuid_from)) {
             $connection = new Connection([
                 'uuid' => Utils::generateUUID(),
-                'user_uuid_from' => $request->user_uuid_from,
+                'user_uuid_from' =>$uuid,
                 'user_uuid_to' => $request->user_uuid_to,
                 'learn_skill_uuid_from' => $request->learn_skill_uuid_from,
                 'teach_skill_uuid_from' => $request->teach_skill_uuid_from,
