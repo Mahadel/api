@@ -12,7 +12,6 @@ class User extends Model
     ];
     protected $hidden = [
         'id',
-        'uuid',
         'email',
         'token',
         'description',
