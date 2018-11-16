@@ -17,6 +17,8 @@ class ConnectionController extends Controller
     }
     public function store($uuid, Request $request)
     {
+        return $request;
+
         if (User::isUserExistWithUUID($uuid)
             && User::isUserExistWithUUID($request->user_uuid_to)
             && Skill::isSkillExistWithUUID($request->learn_skill_uuid_from)
