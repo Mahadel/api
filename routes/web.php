@@ -28,9 +28,6 @@ Route::group(['prefix' => $version_1], function () {
     Route::get('/category', 'CategoryController@index');
     Route::get('/search/{uuid}', 'SearchController@search');
     Route::get('/connection', 'ConnectionController@index');
-    Route::get('user/{uuid}/connection', 'ConnectionController@getConnection');
-    Route::delete('/user/{uuid}/connection/{connection_uuid}', 'ConnectionController@delete');
-    Route::put('/user/{uuid}/connection/{connection_uuid}', 'ConnectionController@editConnection');
 });
 
 Route::group(array('prefix' => $version_1, 'middleware' => ['jwt.user.auth']), function () {
@@ -41,8 +38,10 @@ Route::group(array('prefix' => $version_1, 'middleware' => ['jwt.user.auth']), f
     Route::post('/user/{uuid}/skill', 'UserController@addUserSkill');
     Route::put('/user/{uuid}/skill', 'UserController@editUserSkill');
     Route::delete('/user/{uuid}/skill/{user_skill_uuid}', 'UserController@deleteUserSkill');
-
     Route::post('/user/{uuid}/connection', 'ConnectionController@store');
+    Route::get('user/{uuid}/connection', 'ConnectionController@getConnection');
+    Route::delete('/user/{uuid}/connection/{connection_uuid}', 'ConnectionController@delete');
+    Route::put('/user/{uuid}/connection/{connection_uuid}', 'ConnectionController@editConnection');
 
 });
 
