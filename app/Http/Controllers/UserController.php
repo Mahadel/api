@@ -134,5 +134,6 @@ class UserController extends Controller
                 $connection->save();
             }
         }
+        return Utils::responseMessage('success', 'delete user account', 200);
     }
 }
