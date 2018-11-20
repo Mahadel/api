@@ -133,7 +133,10 @@ class UserController extends Controller
                 $connection->email_from = null;
                 $connection->save();
             }
+            return Utils::responseMessage('success', 'delete user account', 200);
+        } else {
+            return Utils::responseMessage('user not found', 'delete user account', 404);
         }
-        return Utils::responseMessage('success', 'delete user account', 200);
+
     }
 }
