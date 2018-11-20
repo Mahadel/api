@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Utils;
 use App\UserSkill;
 use App\Skill;
+use App\Connection;
 
 class UserController extends Controller
 {
@@ -33,7 +34,7 @@ class UserController extends Controller
     public function getUserInfo($uuid)
     {
         if (User::isUserExistWithUUID($uuid)) {
-            return User::where(['uuid' => $uuid])->first()->setVisible(['first_name','last_name','gender']);
+            return User::where(['uuid' => $uuid])->first()->setVisible(['first_name', 'last_name', 'gender']);
         } else {
             return Utils::responseMessage('user not found.', 'get user skills', 404);
         }
@@ -99,7 +100,7 @@ class UserController extends Controller
         }
     }
 
-    public function deleteUserSkill($uuid,$user_skill_uuid)
+    public function deleteUserSkill($uuid, $user_skill_uuid)
     {
         $user = new User();
         $user = $user->getUserWithUUID($uuid);
@@ -107,13 +108,31 @@ class UserController extends Controller
             $user_skill = new UserSkill();
             $user_skill = $user_skill->getUserSkillWithUUID($user_skill_uuid);
             if ($user_skill) {
-                $user_skill->delete();                
+                $user_skill->delete();
                 return Utils::responseMessage('success', 'delete skill of user', 200);
             } else {
                 return Utils::responseMessage('user skill not found.', 'edit skill of user', 404);
             }
         } else {
             return Utils::responseMessage('user not found.', 'edit skill of user', 404);
+        }
+    }
+
+    public function deleteUser($uuid)
+    {
+        $user = new User();
+        $user = $user->getUserWithUUID($uuid);
+        if ($user) {
+            $user->delete();
+            UserSkill::where('user_uuid', $uuid)->delete();
+            Connection::where('user_uuid_from', $uuid)->delete();
+            $user_connections = Connection::where('user_uuid_to', $uuid)->get();
+            foreach ($user_connections as $connection) {
+                $connection->is_delete = 1;
+                $connection->email_to = null;
+                $connection->email_from = null;
+                $connection->save();
+            }
         }
     }
 }
