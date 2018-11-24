@@ -9,7 +9,7 @@ class AboutController extends Controller
 {
     public function index()
     {
-        return About::all()->first();
+        return About::where('id', 1)->first();
     }
 
     public function store(Request $request)
