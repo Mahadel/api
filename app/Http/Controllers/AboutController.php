@@ -11,4 +11,14 @@ class AboutController extends Controller
     {
         return About::all();
     }
+
+    public function store()
+    {
+        $about = About::first();
+        if ($about) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
