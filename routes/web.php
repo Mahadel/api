@@ -29,7 +29,7 @@ Route::group(['prefix' => $version_1], function () {
     Route::get('/search/{uuid}', 'SearchController@search');
     Route::get('/connection', 'ConnectionController@index');
     Route::get('/about', 'AboutController@index');
-    Route::put('/about', 'AboutController@store');
+    Route::post('/about', 'AboutController@store');
 });
 
 Route::group(array('prefix' => $version_1, 'middleware' => ['jwt.user.auth']), function () {
