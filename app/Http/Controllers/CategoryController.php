@@ -16,6 +16,7 @@ class CategoryController extends Controller
     }
     public function store(Request $request)
     {
+        return $request;
         $category = new Category();
         $category->fa_name = $request->fa_name;
         $category->en_name = $request->en_name;
