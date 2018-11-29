@@ -6,6 +6,7 @@ use App\Category;
 
 use Illuminate\Http\Request;
 use App\Utils;
+use App\Skill;
 
 class CategoryController extends Controller
 {
@@ -22,5 +23,15 @@ class CategoryController extends Controller
         $category->uuid = Utils::generateUUID();
         $category->save();
         return $category;
+    }
+
+    public function storeSkill(Request $request, $uuid)
+    {
+        $skill = new Skill();
+        $skill->category_uuid = $uuid;
+        $skill->fa_name = $request->fa_name;
+        $skill->en_name = $request->en_name;
+        $skill->save();
+        return $skill;
     }
 }
