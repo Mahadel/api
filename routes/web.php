@@ -27,6 +27,8 @@ Route::group(['prefix' => $version_1], function () {
     Route::post('/token', 'AuthenticationController@generateToken');
     Route::get('/category', 'CategoryController@index');
     Route::post('/category', 'CategoryController@store');
+    Route::post('/category/{uuid}/skill', 'CategoryController@storeSkill');
+
     Route::get('/search/{uuid}', 'SearchController@search');
     Route::get('/connection', 'ConnectionController@index');
 });
