@@ -31,6 +31,7 @@ class CategoryController extends Controller
         $skill->category_uuid = $uuid;
         $skill->fa_name = $request->fa_name;
         $skill->en_name = $request->en_name;
+        $skill->uuid = Utils::generateUUID();
         $skill->save();
         return $skill;
     }
