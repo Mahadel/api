@@ -24,6 +24,7 @@ class AboutController extends Controller
             $about->sponsor_description = $request->sponsor_description;
             $about->sponsor_url = $request->sponsor_url;
             $about->save();
+            return $about;
         } else {
             $about_new = new About();
             $about_new->app_version = $request->app_version;
@@ -34,6 +35,7 @@ class AboutController extends Controller
             $about_new->sponsor_description = $request->sponsor_description;
             $about_new->sponsor_url = $request->sponsor_url;
             $about_new->save();
+            return $about_new;
         }
     }
 }
