@@ -57,7 +57,7 @@ class CategoryController extends Controller
         $category = $category->getWithUUID($uuid);
         if ($category) {
             $category->delete();
-            Skill::where('category_id', $uuid)->delete();
+            Skill::where('category_uuid', $uuid)->delete();
             return Utils::responseMessage('success', 'delete category', 200);
         } else {
             return Utils::responseMessage('category not found', 'delete category', 404);
