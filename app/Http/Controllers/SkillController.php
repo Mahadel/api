@@ -12,4 +12,17 @@ class SkillController extends Controller
         $skill = Skill::with('category')->get();
         return $skill;
     }
+
+    public function update($uuid)
+    {
+        $skill = new Skill();
+        $skill = $skill->getSkillWithUUID($uuid);
+        if ($skill) {
+            $skill->fa_name = $request->fa_name;
+            $skill->en_name = $request->en_name;
+            return Utils::responseMessage('success', 'update skill', 200);
+        } else {
+            return Utils::responseMessage('skill not found', 'update skill', 404);
+        }
+    }
 }
