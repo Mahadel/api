@@ -36,7 +36,7 @@ class CategoryController extends Controller
         return $skill;
     }
 
-    public function updateCategory(Request $request, $uuid)
+    public function update(Request $request, $uuid)
     {
         $category = new Category();
         $category = $category->getWithUUID($uuid);
@@ -51,7 +51,7 @@ class CategoryController extends Controller
 
     }
 
-    public function deleteCategory($uuid)
+    public function delete($uuid)
     {
         $category = new Category();
         $category = $category->getWithUUID($uuid);

@@ -25,10 +25,12 @@ Route::group(['prefix' => $version_1], function () {
 
 Route::group(array('prefix' => $version_1, 'middleware' => ['jwt.admin.auth']), function () {
     Route::post('/category', 'CategoryController@store');
-    Route::put('/category/{uuid}', 'CategoryController@updateCategory');
-    Route::delete('/category/{uuid}', 'CategoryController@deleteCategory');
+    Route::put('/category/{uuid}', 'CategoryController@update');
+    Route::delete('/category/{uuid}', 'CategoryController@delete');
 
     Route::post('/category/{uuid}/skill', 'CategoryController@storeSkill');
+
+    Route::put('/skill/{uuid}', 'SkillController@update');
 
     Route::post('/about', 'AboutController@store');
 
