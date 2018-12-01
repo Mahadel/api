@@ -25,10 +25,15 @@ Route::group(['prefix' => $version_1], function () {
 
 Route::group(array('prefix' => $version_1, 'middleware' => ['jwt.admin.auth']), function () {
     Route::post('/category', 'CategoryController@store');
+    Route::put('/category/{uuid}', 'CategoryController@updateCategory');
     Route::post('/category/{uuid}/skill', 'CategoryController@storeSkill');
+
     Route::post('/about', 'AboutController@store');
+
     Route::get('/connection', 'ConnectionController@index');
+
     Route::get('/skill', 'SkillController@index');
+
     Route::get('/user', 'UserController@index');
 });
 Route::group(array('prefix' => $version_1, 'middleware' => ['jwt.user.auth']), function () {

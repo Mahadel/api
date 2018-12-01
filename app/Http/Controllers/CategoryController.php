@@ -35,4 +35,19 @@ class CategoryController extends Controller
         $skill->save();
         return $skill;
     }
+
+    public function updateCategory(Request $request, $uuid)
+    {
+        $category = new Category();
+        $category = $category->getWithUUID($uuid);
+        if ($category) {
+            $category->fa_name = $request->fa_name;
+            $category->en_name = $request->en_name;
+            $category->save();
+            return Utils::responseMessage('success', 'update category', 200);
+        } else {
+            return Utils::responseMessage('category not found', 'update category', 404);
+        }
+
+    }
 }
