@@ -67,7 +67,6 @@ class ConnectionController extends Controller
     {
         $user = new User();
         $user = $user->getUserWithUUID($uuid);
-        //TODO check for owner of connection before remove.
         if ($user) {
             $connection = new Connection();
             $connection = $connection->getConnectionWithUUID($connection_uuid);
