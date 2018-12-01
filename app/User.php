@@ -75,4 +75,19 @@ class User extends Model
             }
         }
     }
+    public function isExistAndAdmin($uuid, $token)
+    {
+        $user = $this->getUserWithUUID($uuid);
+        if ($user) {
+            if ($user->uuid) {
+                if ($user->token == $token && $user->user_type == 10) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+    }
 }

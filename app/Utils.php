@@ -71,7 +71,14 @@ class Utils
         }
     }
 
-    public static function isUserExist($uuid){
-        
+    public static function isJWTExistAndAdmin($token)
+    {
+        $decoded = Utils::getDataJWT($token);
+        $user = new User();
+        if ($user->isExistAndAdmin($decoded->uuid, $token)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
