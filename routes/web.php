@@ -29,8 +29,8 @@ Route::group(array('prefix' => $version_1, 'middleware' => ['jwt.admin.auth']), 
     Route::delete('/category/{uuid}', 'CategoryController@delete');
 
     Route::post('/category/{uuid}/skill', 'CategoryController@storeSkill');
-
     Route::put('/skill/{uuid}', 'SkillController@update');
+    Route::delete('/skill/{uuid}', 'SkillController@delete');
 
     Route::post('/about', 'AboutController@store');
 
