@@ -50,4 +50,17 @@ class CategoryController extends Controller
         }
 
     }
+
+    public function deleteCategory($uuid)
+    {
+        $category = new Category();
+        $category = $category->getWithUUID($uuid);
+        if ($category) {
+            $category->delete();
+            return Utils::responseMessage('success', 'delete category', 200);
+        } else {
+            return Utils::responseMessage('category not found', 'delete category', 404);
+        }
+
+    }
 }
