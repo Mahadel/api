@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Skill extends Model
 {
     protected $fillable = [
-        'category_id',
+        'category_uuid',
         'fa_name',
         'en_name',
         'created_at',
