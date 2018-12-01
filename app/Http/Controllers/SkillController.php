@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Skill;
 use Illuminate\Http\Request;
+use App\Utils;
 
 class SkillController extends Controller
 {
