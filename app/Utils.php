@@ -8,6 +8,9 @@ use Firebase\JWT\JWT;
 class Utils
 {
 
+    /*
+        | Return message to client with message, type of operation and status code of result.
+     */
     public static function responseMessage($message, $operation_type, $status_code)
     {
         return response()->json([
@@ -16,6 +19,9 @@ class Utils
         ], $status_code, ['Content-type' => 'application/json; charset=utf-8']);
     }
 
+    /*
+        | Return generated token to the user.
+     */
     public static function returnToken($uuid, $token, $message, $operation_type, $is_fill_info, $status_code)
     {
         return response()->json([
@@ -27,11 +33,17 @@ class Utils
         ], $status_code, ['Content-type' => 'application/json; charset=utf-8']);
     }
 
+    /*
+        | Generate JWT token
+     */
     public static function generateJWT($data)
     {
         return JWT::encode($data, Config::get('constants.private_key'), 'RS256');
     }
 
+    /*
+        | Check for valid JWT token.
+     */
     public static function isValidJWT($token)
     {
         try {
@@ -42,6 +54,9 @@ class Utils
         }
     }
 
+    /*
+        | Generate UUID as String
+     */
     public static function generateUUID()
     {
 
@@ -52,6 +67,9 @@ class Utils
         }
     }
 
+    /*
+        | Decode and get data of JWT token
+     */
     public static function getDataJWT($token)
     {
         try {
@@ -60,6 +78,10 @@ class Utils
             return nullValue();
         }
     }
+
+    /*
+        | Check for exist JWT token in user table
+     */
     public static function isJWTExist($token)
     {
         $decoded = Utils::getDataJWT($token);
@@ -71,6 +93,9 @@ class Utils
         }
     }
 
+    /*
+        | Check for exist JWT token in user table & type of user is admin
+     */
     public static function isJWTExistAndAdmin($token)
     {
         $decoded = Utils::getDataJWT($token);
