@@ -14,7 +14,7 @@ class SkillController extends Controller
         return $skill;
     }
 
-    public function update($uuid)
+    public function update(Request $request, $uuid)
     {
         $skill = new Skill();
         $skill = $skill->getSkillWithUUID($uuid);
