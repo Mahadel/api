@@ -21,4 +21,9 @@ class Category extends Model
     {
         return $this->hasMany('App\Skill', 'category_uuid', 'uuid');
     }
+
+    public function getWithUUID($uuid)
+    {
+        return Category::where('uuid', $uuid)->first();
+    }
 }
