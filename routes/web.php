@@ -63,6 +63,7 @@ Route::group(array('prefix' => $version_1, 'middleware' => ['jwt.user.auth']), f
     Route::get('/user/{uuid}', 'UserController@getUser');
     Route::delete('/user/{uuid}', 'UserController@deleteUser');
     Route::get('/user/{uuid}/info', 'UserController@getUserInfo');
+    Route::put('/user/{uuid}/firebase', 'UserController@setFirebaseId');
 
     //UserSkill routes
     Route::get('/user/{uuid}/skill', 'UserController@getUserSkill');
