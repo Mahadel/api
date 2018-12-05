@@ -18,7 +18,8 @@ class User extends Model
         'user_type',
         'is_active',
         'created_at',
-        'updated_at'
+        'updated_at',
+        'firebase_id'
     ];
 
     public function userSkills()
