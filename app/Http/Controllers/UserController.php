@@ -139,4 +139,16 @@ class UserController extends Controller
         }
 
     }
+    public function setFirebaseId(Request $request, $uuid)
+    {
+        $user = new User();
+        $user = $user->getUserWithUUID($uuid);
+        if ($user) {
+            $user->firebase_id = $request->firebase_id;
+            $user->save();
+            return Utils::responseMessage('success', 'set firebase id', 200);
+        } else {
+            return Utils::responseMessage('user not found', 'set firebase id', 404);
+        }
+    }
 }
