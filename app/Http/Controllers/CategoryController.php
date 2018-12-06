@@ -17,22 +17,18 @@ class CategoryController extends Controller
     }
     public function store(Request $request)
     {
-        $category = new Category();
-        $category->fa_name = $request->fa_name;
-        $category->en_name = $request->en_name;
-        $category->uuid = Utils::generateUUID();
-        $category->save();
+        $category = Category::create($request->all() + [
+            'uuid' => Utils::generateUUID()
+        ]);
         return $category;
     }
 
     public function storeSkill(Request $request, $uuid)
     {
-        $skill = new Skill();
-        $skill->category_uuid = $uuid;
-        $skill->fa_name = $request->fa_name;
-        $skill->en_name = $request->en_name;
-        $skill->uuid = Utils::generateUUID();
-        $skill->save();
+        $skill = Skill::create($request->all() + [
+            'category_uuid' => $uuid,
+            'uuid' => Utils::generateUUID()
+        ]);
         return $skill;
     }
 
@@ -41,8 +37,7 @@ class CategoryController extends Controller
         $category = new Category();
         $category = $category->getWithUUID($uuid);
         if ($category) {
-            $category->fa_name = $request->fa_name;
-            $category->en_name = $request->en_name;
+            $category->fill($request->all());
             $category->save();
             return Utils::responseMessage('success', 'update category', 200);
         } else {
