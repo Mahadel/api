@@ -14,7 +14,7 @@ class AddFirebaseFieldToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->text('firebase_id')->default(null);
+            $table->text('firebase_id')->nullable();
         });
     }
 
