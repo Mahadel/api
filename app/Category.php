@@ -10,6 +10,7 @@ class Category extends Model
     protected $fillable = [
         'fa_name',
         'en_name',
+        'uuid',
         'created_at',
         'updated_at'
     ];
