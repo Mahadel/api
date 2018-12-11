@@ -68,8 +68,8 @@ class UserController extends Controller
             if ($skill) {
                 $user_skill = new UserSkill();
                 $user_skill->uuid = Utils::generateUUID();
-                $user_skill->user_uuid = $uuid;
-                $user_skill->skill_uuid = $request->skill_uuid;
+                $user_skill->user_id = User::where('uuid',$uuid)->first()->id;
+                $user_skill->skill_id = Skill::where('uuid',$request->skill_uuid)->first()->id;
                 $user_skill->description = $request->description;
                 $user_skill->skill_type = $request->skill_type;
                 $user_skill->save();
@@ -124,7 +124,6 @@ class UserController extends Controller
         $user = $user->getUserWithUUID($uuid);
         if ($user) {
             $user->delete();
-            UserSkill::where('user_uuid', $uuid)->delete();
             Connection::where('user_uuid_from', $uuid)->delete();
             $user_connections = Connection::where('user_uuid_to', $uuid)->get();
             foreach ($user_connections as $connection) {

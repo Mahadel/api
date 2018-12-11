@@ -24,13 +24,13 @@ class SearchController extends Controller
             }
         })->values();
         $user_skill_learn->all();
-        $teach_ids = $user_skill_teach->pluck('skill_uuid');
+        $teach_ids = $user_skill_teach->pluck('skill_id');
         $teach_ids->all();
-        $learn_ids = $user_skill_learn->pluck('skill_uuid');
+        $learn_ids = $user_skill_learn->pluck('skill_id');
         $learn_ids->all();
 
-        $want_learn_result = UserSkill::whereIn('skill_uuid', $learn_ids)->where(['skill_type' => 1])->get();
-        $want_teach_result = UserSkill::whereIn('skill_uuid', $teach_ids)->where(['skill_type' => 2])->get();
+        $want_learn_result = UserSkill::whereIn('skill_id', $learn_ids)->where(['skill_type' => 1])->get();
+        $want_teach_result = UserSkill::whereIn('skill_id', $teach_ids)->where(['skill_type' => 2])->get();
         $data = array();
         foreach ($want_learn_result as $learn_item) {
             foreach ($want_teach_result as $teach_item) {
