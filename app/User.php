@@ -24,7 +24,7 @@ class User extends Model
 
     public function userSkills()
     {
-        return $this->hasMany('App\UserSkill', 'user_uuid', 'uuid');
+        return $this->hasMany('App\UserSkill', 'user_id', 'id');
     }
 
     public function storeOrLogin(User $user)
