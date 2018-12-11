@@ -20,7 +20,7 @@ class Category extends Model
 
     public function skills()
     {
-        return $this->hasMany('App\Skill', 'category_uuid', 'uuid');
+        return $this->hasMany('App\Skill', 'category_id', 'id');
     }
 
     public function getWithUUID($uuid)
