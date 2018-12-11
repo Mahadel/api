@@ -4,18 +4,24 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Category;
+
 class Skill extends Model
 {
     protected $fillable = [
-        'category_uuid',
+        'category_id',
         'fa_name',
         'en_name',
+        'uuid',
         'created_at',
         'updated_at'
     ];
     protected $hidden = [
-        'id'
+        'id',
+        'category_id'
     ];
+
+    protected $appends = ['category_uuid'];
 
     public function category()
     {
@@ -33,5 +39,10 @@ class Skill extends Model
         } else {
             return false;
         }
+    }
+
+    public function getCategoryUuidAttribute()
+    {
+        return Category::find($this->category_id)->uuid;
     }
 }
