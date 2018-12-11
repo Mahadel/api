@@ -16,11 +16,19 @@ class CreateUserSkillsTable extends Migration
         Schema::create('user_skills', function (Blueprint $table) {
             $table->increments('id');
             $table->string('uuid');
-            $table->string('user_uuid');
-            $table->string('skill_uuid');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('skill_id');
             $table->text('description')->nullable();
             $table->integer('skill_type');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade'); 
+
+            $table->foreign('skill_id')->references('id')->on('skills')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');        
         });
     }
 
