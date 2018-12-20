@@ -59,7 +59,6 @@ class Utils
      */
     public static function generateUUID()
     {
-
         try {
             return \Ramsey\Uuid\Uuid::uuid4()->toString();
         } catch (\Exception $e) {
@@ -86,11 +85,7 @@ class Utils
     {
         $decoded = Utils::getDataJWT($token);
         $user = new User();
-        if ($user->isExist($decoded->uuid, $token)) {
-            return true;
-        } else {
-            return false;
-        }
+        return ($user->isExist($decoded->uuid, $token) ? true : false;
     }
 
     /*
@@ -100,10 +95,6 @@ class Utils
     {
         $decoded = Utils::getDataJWT($token);
         $user = new User();
-        if ($user->isExistAndAdmin($decoded->uuid, $token)) {
-            return true;
-        } else {
-            return false;
-        }
+        return  ($user->isExistAndAdmin($decoded->uuid, $token)) ? true : false;
     }
 }

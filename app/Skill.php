@@ -34,11 +34,7 @@ class Skill extends Model
 
     public static function isSkillExistWithUUID($uuid)
     {
-        if (Skill::where('uuid', $uuid)->first()) {
-            return true;
-        } else {
-            return false;
-        }
+        return (Skill::where('uuid', $uuid)->first()) ? true : false;
     }
 
     public function getCategoryUuidAttribute()
