@@ -66,6 +66,14 @@ class UserController extends Controller
             $skill = new Skill();
             $skill = $skill->getSkillWithUUID($request->skill_uuid);
             if ($skill) {
+
+                if(UserSkill::where('user_id', User::where('uuid',$uuid)->first()->id)
+                            ->where('skill_id', Skill::where('uuid',$request->skill_uuid)->first()->id)
+                            ->count()
+                > 0) {
+                    return Utils::responseMessage('skill is already registered.', 'add skill of user', 400);
+                }
+
                 $user_skill = new UserSkill();
                 $user_skill->uuid = Utils::generateUUID();
                 $user_skill->user_id = User::where('uuid',$uuid)->first()->id;
