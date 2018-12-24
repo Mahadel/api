@@ -21,6 +21,15 @@ class ConnectionController extends Controller
             && User::isUserExistWithUUID($request->user_uuid_to)
             && Skill::isSkillExistWithUUID($request->learn_skill_uuid_from)
             && Skill::isSkillExistWithUUID($request->teach_skill_uuid_from)) {
+
+            if(Connection::where('user_uuid_from' => $uuid)
+                         ->where('user_uuid_to' => $request->user_uuid_to)
+                         ->where('learn_skill_uuid_from' => $request->learn_skill_uuid_from)
+                         ->where('teach_skill_uuid_from' => $request->teach_skill_uuid_from)
+                         ->count()  
+            > 0) {
+                return Utils::responseMessage('Connection is already exists.', 'store connection', 400);
+            }
             $connection = new Connection([
                 'uuid' => Utils::generateUUID(),
                 'user_uuid_from' =>$uuid,
