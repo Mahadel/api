@@ -60,7 +60,7 @@ class User extends Model
     public function isExist($uuid, $token)
     {
         $user = $this->getUserWithUUID($uuid);
-        return ($user && user->uuid && $user->token == $token) ? true : false;
+        return ($user && $user->uuid && $user->token == $token) ? true : false;
     }
     public function isExistAndAdmin($uuid, $token)
     {
